@@ -1,0 +1,9 @@
+11:12:11.175 [main] INFO  base.Base - Properties file loaded.
+11:12:22.091 [main] ERROR base.Base - Driver is initialized.
+11:12:29.596 [main] INFO  base.Base - Properties file loaded.
+22:18:02.082 [main] ERROR base.Base - Driver is initialized.
+22:18:05.415 [main] INFO  base.Base - Properties file loaded.
+22:18:09.806 [main] ERROR base.Base - Driver is initialized.
+22:18:13.431 [main] INFO  base.Base - Properties file loaded.
+14:17:58.468 [main] ERROR base.Base - Driver is initialized.
+14:18:02.880 [main] INFO  base.Base - Properties file loaded.
