@@ -1,10 +1,10 @@
 package stepDefinitions;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import dataProvider.ConfigFileReader;
+import managers.FileReaderManager;
 import managers.PageObjectManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,8 +14,6 @@ import pages.LoginPage;
 import pages.MyAccountPage;
 import selenium.Settings;
 
-import java.io.IOException;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class BaseScenarioSteps {
@@ -25,18 +23,17 @@ public class BaseScenarioSteps {
     LoginPage loginPage;
     MyAccountPage myAccountPage;
     PageObjectManager pageObjectManager;
-    ConfigFileReader configFileReader;
 
     @Given("I am on the landing page")
     public void i_am_on_the_landing_page() {
 
-        configFileReader = new ConfigFileReader();
-        System.setProperty("webdriver.chrome.driver", configFileReader.getDriverPath());
+        System.setProperty("webdriver.chrome.driver", FileReaderManager.getInstance().getConfigFileReader().getDriverPath());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(configFileReader.getImplicitlyWait(), TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigFileReader().getImplicitlyWait(), TimeUnit.SECONDS);
+        pageObjectManager = new PageObjectManager(driver);
 
-        landingPage = new LandingPage(driver);
+        landingPage = pageObjectManager.getLandingPage();
         landingPage.navigateToLandingPage();
     }
 
@@ -49,7 +46,7 @@ public class BaseScenarioSteps {
     @When("I attempt to login to the application with username {string} and password {string}")
     public void i_attempt_to_login_to_the_application_with_username_and_password(String username, String password) {
 
-        loginPage = new LoginPage(driver);
+        loginPage = pageObjectManager.getLoginPage();
         loginPage.enterEmail(username);
         loginPage.enterPassword(password);
         loginPage.clickSignInButton();
@@ -64,8 +61,8 @@ public class BaseScenarioSteps {
     @Then("I should see my account information")
     public void i_should_see_my_account_information() {
 
-        myAccountPage = new MyAccountPage(driver);
-
+        myAccountPage = pageObjectManager.getMyAccountPage();
+        myAccountPage.validateAccountInfo();
     }
 
     @Then("an error message is displayed")

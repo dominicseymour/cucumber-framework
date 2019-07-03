@@ -20,7 +20,7 @@ public class MyAccountPage {
     @FindBy(how = How.CSS, using = "a[title*='View my customer account'")
     private WebElement customerAccountButton;
 
-    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'MY ACCOUNT')]")
+    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'My account')]")
     private WebElement myAccountHeading;
 
     public void validateAccountInfo() {
