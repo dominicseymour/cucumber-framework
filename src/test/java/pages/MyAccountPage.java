@@ -10,7 +10,10 @@ import org.testng.Assert;
 
 public class MyAccountPage {
 
+    WebDriver driver;
+
     public MyAccountPage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
