@@ -3,30 +3,38 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import java.io.IOException;
 
-public class LoginPage extends LandingPage {
+public class LoginPage {
 
-    By emailInputField = By.id("email");
-
-    By passwordInputField = By.id("passwd");
-
-    By signInButton = By.id("SubmitLogin");
-
-    public WebElement getEmailInputField() { return driver.findElement(emailInputField);
+    public LoginPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
     }
 
-    public WebElement getPasswordInputField() {
-        return driver.findElement(passwordInputField);
+    @FindBy(how = How.CSS, using = "#email")
+    private WebElement emailInputField;
+
+    @FindBy(how = How.CSS, using = "#passwd")
+    private WebElement passwordInputField;
+
+    @FindBy(how = How.CSS, using = "#SubmitLogin")
+    private WebElement signInButton;
+
+    public void enterEmail(String email) {
+        emailInputField.sendKeys(email);
     }
 
-    public WebElement getSignInButton() {
-        return driver.findElement(signInButton);
+    public void enterPassword(String password) {
+        passwordInputField.sendKeys(password);
     }
 
-    public void validatePageUrl(String expectedUrl) {
-        Assert.assertEquals(expectedUrl, driver.getCurrentUrl());
+    public void clickSignInButton() {
+        signInButton.click();
     }
+
 }
