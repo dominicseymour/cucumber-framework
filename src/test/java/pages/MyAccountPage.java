@@ -27,4 +27,8 @@ public class MyAccountPage {
         Assert.assertTrue(myAccountHeading.isDisplayed());
     }
 
+    public void validatePageUrl() {
+        Assert.assertTrue(driver.getCurrentUrl().contains("account"));
+    }
+
 }

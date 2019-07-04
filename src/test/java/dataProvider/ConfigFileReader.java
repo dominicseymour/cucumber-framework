@@ -1,5 +1,8 @@
 package dataProvider;
 
+import enums.DriverType;
+import enums.EnvironmentType;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -45,6 +48,33 @@ public class ConfigFileReader {
         if (baseUrl != null)
             return baseUrl;
         else throw new RuntimeException("Base URL not specified in Configuration properties file.");
+    }
+
+    public EnvironmentType getEnvironment() {
+        String environment = properties.getProperty("environment");
+        if (environment == null || environment.equalsIgnoreCase("local"))
+            return EnvironmentType.LOCAL;
+        else if (environment.equalsIgnoreCase("remote"))
+            return EnvironmentType.REMOTE;
+        else throw new RuntimeException("Environment (" + environment + ") in Configuration properties file not recognised.");
+    }
+
+    public DriverType getBrowser() {
+        String browser = properties.getProperty("browser");
+        if (browser == null || browser.equalsIgnoreCase("chrome"))
+            return DriverType.CHROME;
+        else if (browser.equalsIgnoreCase("firefox"))
+            return DriverType.FIREFOX;
+        else if (browser.equalsIgnoreCase("internetExplorer"))
+            return DriverType.INTERNETEXPLORER;
+        else throw new RuntimeException("Browser (" + browser + ") in Configuration properties file not recognised.");
+    }
+
+    public boolean getWindowMaximise() {
+        String windowMaximise = properties.getProperty("windowMaximise");
+        if (windowMaximise != null)
+            return Boolean.parseBoolean(windowMaximise);
+        else return true;
     }
 
 }

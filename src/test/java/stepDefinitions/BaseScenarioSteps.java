@@ -6,15 +6,13 @@ import cucumber.api.java.en.When;
 import dataProvider.ConfigFileReader;
 import managers.FileReaderManager;
 import managers.PageObjectManager;
+import managers.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import pages.LandingPage;
 import pages.LoginPage;
 import pages.MyAccountPage;
-import selenium.Settings;
-
-import java.util.concurrent.TimeUnit;
 
 public class BaseScenarioSteps {
 
@@ -23,14 +21,13 @@ public class BaseScenarioSteps {
     LoginPage loginPage;
     MyAccountPage myAccountPage;
     PageObjectManager pageObjectManager;
+    WebDriverManager webDriverManager;
 
     @Given("I am on the landing page")
     public void i_am_on_the_landing_page() {
 
-        System.setProperty("webdriver.chrome.driver", FileReaderManager.getInstance().getConfigFileReader().getDriverPath());
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigFileReader().getImplicitlyWait(), TimeUnit.SECONDS);
+        webDriverManager = new WebDriverManager();
+        driver = webDriverManager.getDriver();
         pageObjectManager = new PageObjectManager(driver);
 
         landingPage = pageObjectManager.getLandingPage();
@@ -54,7 +51,8 @@ public class BaseScenarioSteps {
 
     @Then("I am navigated to the My Account page")
     public void iAmNavigatedToTheMyAccountPage() {
-        Assert.assertEquals(driver.getCurrentUrl(), Settings.myAccountPageUrl);
+        myAccountPage = new MyAccountPage(driver);
+        myAccountPage.validatePageUrl();
     }
 
 
