@@ -12,7 +12,7 @@ import java.util.Properties;
 public class ConfigFileReader {
 
     private Properties properties;
-    private final String propertyFilePath = "/Users/dom/Learning/Selenium/AutomationPracticeCucumberFramework/src/configs/Configuation.properties";
+    private final String propertyFilePath = "/Users/dom/Learning/Selenium/AutomationPracticeCucumberFramework/configs/Configuation.properties";
 
     public ConfigFileReader() {
         BufferedReader reader;
