@@ -15,7 +15,6 @@ public class LoginPageSteps {
     public LoginPageSteps(TestContext testContext) {
         this.testContext = testContext;
         loginPage = testContext.getPageObjectManager().getLoginPage();
-
     }
 
     @When("I attempt to login to the application with username {string} and password {string}")

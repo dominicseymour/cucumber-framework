@@ -2,7 +2,6 @@ package cucumber;
 
 import managers.PageObjectManager;
 import managers.WebDriverManager;
-import org.openqa.selenium.WebDriver;
 
 public class TestContext {
 

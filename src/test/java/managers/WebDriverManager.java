@@ -31,7 +31,7 @@ public class WebDriverManager {
         return driver;
     }
 
-    public WebDriver createDriver() {
+    private WebDriver createDriver() {
         if (environmentType == LOCAL)
             driver = createLocalDriver();
         else if (environmentType == REMOTE)
