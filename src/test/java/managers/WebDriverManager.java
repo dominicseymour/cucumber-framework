@@ -59,6 +59,9 @@ public class WebDriverManager {
         if (FileReaderManager.getInstance().getConfigFileReader().getWindowMaximise())
             driver.manage().window().maximize();
 
+        // Clear cache
+        driver.manage().deleteAllCookies();
+
         // Set implicit wait time
         driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigFileReader().getImplicitlyWait(), TimeUnit.SECONDS);
 

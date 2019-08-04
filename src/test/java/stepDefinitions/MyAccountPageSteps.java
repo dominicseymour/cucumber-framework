@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import managers.PageObjectManager;
 import managers.WebDriverManager;
@@ -24,7 +25,12 @@ public class MyAccountPageSteps {
 
     @Then("I should see my account information")
     public void i_should_see_my_account_information() {
-
         myAccountPage.validateAccountInfo();
     }
+
+    @Given("I navigate to the Flight Booking page")
+    public void i_navigate_to_the_Flight_Booking_page() {
+        myAccountPage.selectFlightsPageTab();
+    }
+
 }

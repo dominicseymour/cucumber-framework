@@ -15,17 +15,17 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(how = How.CSS, using = "#email")
-    private WebElement emailInputField;
+    @FindBy(how = How.CSS, using = "input[name = 'username']")
+    private WebElement usernameInputField;
 
-    @FindBy(how = How.CSS, using = "#passwd")
+    @FindBy(how = How.CSS, using = "input[name = 'password']")
     private WebElement passwordInputField;
 
-    @FindBy(how = How.CSS, using = "#SubmitLogin")
-    private WebElement signInButton;
+    @FindBy(how = How.XPATH, using = "//button[text()='Login']")
+    private WebElement loginButton;
 
-    public void enterEmail(String email) {
-        emailInputField.sendKeys(email);
+    public void enterUsername(String email) {
+        usernameInputField.sendKeys(email);
     }
 
     public void enterPassword(String password) {
@@ -33,7 +33,7 @@ public class LoginPage {
     }
 
     public void clickSignInButton() {
-        signInButton.click();
+        loginButton.click();
     }
 
 }
