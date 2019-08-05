@@ -15,6 +15,11 @@ public class RegisterPageSteps {
         registerPage = testContext.getPageObjectManager().getRegisterPage();
     }
 
+    @Given("I register as a new user")
+    public void i_register_as_a_new_user() {
+        registerPage.register();
+    }
+
     @Given("I enter first name as {string}")
     public void i_enter_first_name_as(String firstName) {
         registerPage.inputFirstName(firstName);

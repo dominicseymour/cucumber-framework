@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import pages.LoginPage;
 
@@ -20,5 +21,10 @@ public class LoginPageSteps {
         loginPage.enterUsername(username);
         loginPage.enterPassword(password);
         loginPage.clickSignInButton();
+    }
+
+    @Given("I sign in to the application")
+    public void i_sign_in_to_the_application() {
+        loginPage.signIn();
     }
 }

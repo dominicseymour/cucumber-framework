@@ -63,4 +63,14 @@ public class RegisterPage {
     public void clickSignUpButton() {
         signUpButton.click();
     }
+
+    public void register() {
+        firstNameInputField.sendKeys("Dom");
+        lastNameInputField.sendKeys("Test");
+        phoneInputField.sendKeys("0787654321");
+        emailInputField.sendKeys("test545574@test.com");
+        passwordInputField.sendKeys("Password1");
+        confirmpasswordInputField.sendKeys("Password1");
+        signUpButton.click();
+    }
 }

@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Calendar;
 import java.util.List;
@@ -75,6 +77,8 @@ public class FlightBookingPage {
     }
 
     public void validateUrl() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.titleIs("PHPTRAVELS | Travel Technology Partner"));
         Assert.assertTrue(driver.getCurrentUrl().equals("https://www.phptravels.net/m-thflight"));
     }
 

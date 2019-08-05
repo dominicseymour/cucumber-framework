@@ -36,4 +36,10 @@ public class LoginPage {
         loginButton.click();
     }
 
+    public void signIn() {
+        enterUsername("user@phptravels.com");
+        enterPassword("demouser");
+        clickSignInButton();
+    }
+
 }

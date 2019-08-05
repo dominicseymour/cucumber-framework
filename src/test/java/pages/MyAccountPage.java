@@ -12,9 +12,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class MyAccountPage {
 
     WebDriver driver;
+    WebDriverWait wait;
 
     public MyAccountPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, 10);
         PageFactory.initElements(driver, this);
     }
 
@@ -28,16 +30,18 @@ public class MyAccountPage {
     private WebElement welcomeText;
 
     public void validateAccountInfo() {
-        Assert.assertTrue(welcomeText.getText().equalsIgnoreCase("Hi, Test Test"));
+        wait.until(ExpectedConditions.titleIs("My Account"));
+        Assert.assertTrue(welcomeText.getText().contains("Hi, "));
     }
 
     public void validatePageUrl() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.titleIs("My Account"));
         Assert.assertTrue(driver.getCurrentUrl().equalsIgnoreCase("https://www.phptravels.net/account/"));
     }
 
     public void selectFlightsPageTab() {
+        wait.until(ExpectedConditions.elementToBeClickable(flightsPageTab));
+        flightsPageTab.click();
         flightsPageTab.click();
     }
 
