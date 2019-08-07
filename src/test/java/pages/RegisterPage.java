@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import testDataTypes.User;
 
 public class RegisterPage {
 
@@ -72,5 +73,14 @@ public class RegisterPage {
         passwordInputField.sendKeys("Password1");
         confirmpasswordInputField.sendKeys("Password1");
         signUpButton.click();
+    }
+
+    public void populateUserDetails(User user) {
+        inputFirstName(user.firstName);
+        inputLastName(user.lastName);
+        inputPhone(user.phoneNumber);
+        inputEmail(user.email);
+        inputPassword(user.password);
+        inputConfirmPassword(user.password);
     }
 }

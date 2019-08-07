@@ -1,4 +1,4 @@
-package dataProvider;
+package dataProviders;
 
 import enums.DriverType;
 import enums.EnvironmentType;
@@ -75,6 +75,13 @@ public class ConfigFileReader {
         if (windowMaximise != null)
             return Boolean.parseBoolean(windowMaximise);
         else return true;
+    }
+
+    public String getTestDataResourcePath() {
+        String testDataResourcesPath = properties.getProperty("testDataResourcesPath");
+        if (testDataResourcesPath != null)
+            return testDataResourcesPath;
+        else throw new RuntimeException("Test data resources path not specified in Configuration properties file.");
     }
 
 }

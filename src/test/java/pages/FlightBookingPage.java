@@ -11,6 +11,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import selenium.Wait;
 
 import java.util.Calendar;
 import java.util.List;
@@ -42,14 +43,14 @@ public class FlightBookingPage {
     public void selectDepartureAirport(String searchTerm) throws InterruptedException {
         departureAirportSelector.click();
         inputField.sendKeys(searchTerm);
-        Thread.sleep(3000);
+        Wait.untilJqueryIsDone(driver);
         inputField.sendKeys(Keys.RETURN);
     }
 
     public void setDestinationAirportSelector (String searchTerm) throws InterruptedException {
         destinationAirportSelector.click();
         inputField.sendKeys(searchTerm);
-        Thread.sleep(3000);
+        Wait.untilJqueryIsDone(driver);
         inputField.sendKeys(Keys.RETURN);
     }
 

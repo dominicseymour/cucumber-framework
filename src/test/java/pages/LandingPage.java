@@ -8,11 +8,6 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
 
 public class LandingPage {
 
@@ -23,9 +18,6 @@ public class LandingPage {
         PageFactory.initElements(driver, this);
     }
 
-//    @FindBy(how = How.XPATH, using = "//ul[@class='nav navbar-nav navbar-right hidden-sm go-left']//a[@class='dropdown-toggle go-text-right'][contains(text(),'My Account')]")
-//    private WebElement accountButton;
-
     @FindBy(how = How.XPATH, using = "//ul[@class='nav navbar-nav navbar-right hidden-sm go-left']//ul[@class='nav navbar-nav navbar-side navbar-right sidebar go-left user_menu']//li[@id='li_myaccount']//ul[@class='dropdown-menu']//li//a[@class='go-text-right'][contains(text(),'Login')]")
     private WebElement signInButton;
 
@@ -34,10 +26,6 @@ public class LandingPage {
 
     @FindBy(how = How.CSS, using = "#cookyGotItBtn")
     private WebElement acceptCookiesButton;
-
-//    public void clickaccountButton() {
-//        accountButton.click();
-//            }
 
     public void clickSignInButton() {
 

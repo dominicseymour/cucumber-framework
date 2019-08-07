@@ -1,8 +1,10 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
+import managers.FileReaderManager;
 import pages.RegisterPage;
 
 public class RegisterPageSteps {
@@ -53,5 +55,10 @@ public class RegisterPageSteps {
     @When("I click the sign up button")
     public void i_click_the_sign_up_button() {
         registerPage.clickSignUpButton();
+    }
+
+    @And("I enter registration details for {string}")
+    public void iEnterRegistrationDetailsFor(String firstName) {
+        registerPage.populateUserDetails(FileReaderManager.getInstance().getJsonDataReader().getUserByName(firstName));
     }
 }

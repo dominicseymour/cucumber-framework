@@ -1,0 +1,16 @@
+[
+  {
+    "firstName": "Sally",
+    "lastName": "Test",
+    "phoneNumber": "07878878837",
+    "email": "Test2355@test.com",
+    "password": "password"
+  },
+  {
+    "firstName": "Dennis",
+    "lastName": "Singleton",
+    "phoneNumber": "07823788291",
+    "email": "cheesedemon@test.com",
+    "password" : "Password1"
+  }
+]
