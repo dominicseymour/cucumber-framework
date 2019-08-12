@@ -33,4 +33,9 @@ public class MyAccountPageSteps {
         myAccountPage.selectFlightsPageTab();
     }
 
+    @Given("I navigate to the Car Booking page")
+    public void i_navigate_to_the_Car_Booking_page() {
+       myAccountPage.selectCarsPageTab();
+    }
+
 }

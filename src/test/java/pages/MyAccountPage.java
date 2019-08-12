@@ -8,6 +8,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import selenium.Wait;
 
 public class MyAccountPage {
 
@@ -25,6 +26,9 @@ public class MyAccountPage {
 
     @FindBy(how = How.CSS, using = "a[href='https://www.phptravels.net/m-thflight']")
     private WebElement flightsPageTab;
+
+    @FindBy(how = How.CSS, using = "a[href='https://www.phptravels.net/m-cars']")
+    private WebElement carsPageTab;
 
     @FindBy(how = How.XPATH, using = "//h3[@class='RTL']")
     private WebElement welcomeText;
@@ -45,4 +49,8 @@ public class MyAccountPage {
         flightsPageTab.click();
     }
 
+    public void selectCarsPageTab() {
+        Wait.untilJqueryIsDone(driver);
+        carsPageTab.click();
+    }
 }

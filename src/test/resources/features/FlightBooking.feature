@@ -1,12 +1,12 @@
 Feature: Flight booking
 
-  Background: User navigates to landing page
+  Background: User navigates to Flight Booking page
     Given I am on the landing page
     And I navigate to the login page
     And I sign in to the application
     And I navigate to the Flight Booking page
 
-    @new_test
+    @old_test
     Scenario: As a registered user I am able to search for a flight
       Given I am on the Flight Booking page
       When I input departure airport as "IND"

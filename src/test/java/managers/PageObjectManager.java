@@ -19,6 +19,14 @@ public class PageObjectManager {
 
     private RegisterPage registerPage;
 
+    private CarBookingPage carBookingPage;
+
+    private CarBookingSummaryPage carBookingSummaryPage;
+
+    private CarDetailsPage carDetailsPage;
+
+    private CarResultsPage carResultsPage;
+
     public PageObjectManager(WebDriver driver) {
         this.driver = driver;
     }
@@ -57,5 +65,29 @@ public class PageObjectManager {
         if (registerPage == null)
             return registerPage = new RegisterPage(driver);
         return registerPage;
+    }
+
+    public CarBookingPage getCarBookingPage() {
+        if (carBookingPage == null)
+            return carBookingPage = new CarBookingPage(driver);
+        return carBookingPage;
+    }
+
+    public CarBookingSummaryPage getCarBookingSummaryPage() {
+        if (carBookingSummaryPage == null)
+            return carBookingSummaryPage = new CarBookingSummaryPage(driver);
+        return carBookingSummaryPage;
+    }
+
+    public CarDetailsPage getCarDetailsPage() {
+        if (carDetailsPage == null)
+            return carDetailsPage = new CarDetailsPage(driver);
+        return carDetailsPage;
+    }
+
+    public CarResultsPage getCarResultsPage() {
+        if (carDetailsPage == null)
+            return new CarResultsPage(driver);
+        return carResultsPage;
     }
 }
