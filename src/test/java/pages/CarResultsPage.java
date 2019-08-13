@@ -1,11 +1,15 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class CarResultsPage {
 
@@ -19,14 +23,22 @@ public class CarResultsPage {
     @FindBy(how = How.XPATH, using = "//button[@class='btn btn-action loader loader btn-block br25']")
     WebElement carDetailsButton;
 
-    @FindBy(how = How.CSS, using = ".itemscontainer")
-    private WebElement carResultsList;
+    @FindAll
+    (@FindBy(how = How.CSS, using = "h4[class='RTL go-text-right mt0 list_title']"))
+    private List<WebElement> carResultsList;
 
-    public void selectCarDetailsButton() {
+    @FindBy(how = How.CSS, using = "h4[class='RTL go-text-right mt0 list_title']")
+    private WebElement carName;
+
+    public void clickCarDetailsButton() {
         carDetailsButton.click();
     }
 
+    public String getCarName(int positionInList) {
+        return carResultsList.get(positionInList).getText();
+    }
+
     public void validateResultsDisplayed() {
-        Assert.assertTrue(carResultsList.isDisplayed());
+        Assert.assertFalse(carResultsList.isEmpty());
     }
 }

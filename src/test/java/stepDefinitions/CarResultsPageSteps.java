@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import cucumber.TestContext;
 import cucumber.api.java.en.Then;
+import enums.Context;
 import pages.CarResultsPage;
 
 public class CarResultsPageSteps {
@@ -21,6 +22,9 @@ public class CarResultsPageSteps {
 
     @Then("I select the first car in the list")
     public void i_select_the_first_car_in_the_list() {
-        carResultsPage.selectCarDetailsButton();
+        String carName = carResultsPage.getCarName(0);
+        testContext.getScenarioContext().setContext(Context.CAR_NAME, carName);
+
+        carResultsPage.clickCarDetailsButton();
     }
 }

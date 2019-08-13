@@ -15,10 +15,11 @@ public class CarBookingSummaryPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Kia Pacanto 2014')]")
-    WebElement carDetails;
+    @FindBy(how = How.CSS, using = "h6[class='m0']")
+    WebElement carName;
 
-    public void validateCarDetails() {
-
+    public String getCarName() {
+        return carName.getText();
     }
+
 }
